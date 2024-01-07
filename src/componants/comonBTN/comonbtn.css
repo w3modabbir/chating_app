@@ -1,0 +1,10 @@
+
+.common_btn{
+    background-color: #5F34F5;
+    padding: 26px 122px;
+    color: #fff;
+    font-size: 21px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
