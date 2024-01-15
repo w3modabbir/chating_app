@@ -24,8 +24,12 @@ const Login = () => {
                 <span>Login with Google</span>
               </div>
               <div className='from_main'>
-                <Input name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>
-                <Input name="password" type="password" variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password"/>
+                <div>
+                  <Input name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>
+                </div>
+                <div>
+                  <Input name="password" type="password" variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password"/>
+                </div>
                 <CustomBtn styling="submitBtn" variant="Contained" text="Login to Continue"/>
               </div>
               <div>
@@ -42,7 +46,7 @@ const Login = () => {
         </div>
       </Grid>
     </Grid>
-  </Box>
+    </Box>
   )
 }
 

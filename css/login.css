@@ -38,7 +38,7 @@ p {
   align-items: center;
 }
 .login_txt_main .login_item {
-  width: 370px;
+  width: 480px;
 }
 .login_txt_main .login_item .auth_heading {
   color: #03014C;
@@ -47,6 +47,12 @@ p {
   font-family: "'Open Sans', sans-serif";
   text-transform: capitalize;
   margin-bottom: 30px;
+}
+.login_txt_main .login_item .peragrap {
+  color: #4D4D4D;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "'Open Sans', sans-serif";
 }
 .login_txt_main .login_item .provider_login {
   border: 1px solid #03014C;
@@ -67,7 +73,7 @@ p {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  row-gap: 50px;
+  row-gap: 40px;
 }
 .login_txt_main .login_item .from_main .login_input_filed {
   width: 100%;

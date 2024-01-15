@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     .login_item{
-        width: 370px;
+        width: 480px;
         .auth_heading{
             color: $loginColor;
             font-size: 34px;
@@ -17,6 +17,12 @@
             font-family: $openSans;
             text-transform: capitalize;
             margin-bottom: 30px;
+        }
+        .peragrap{
+            color: $scendary;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: $openSans;
         }
         .provider_login{
             border: 1px solid $loginColor;
@@ -36,7 +42,7 @@
             margin-top: 30px;
             display: flex;
             flex-direction: column;
-            row-gap: 50px;
+            row-gap: 40px;
             .login_input_filed{
                 width: 100%;
                 color: $loginColor;
