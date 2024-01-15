@@ -1,0 +1,128 @@
+/*========== Login css start here ===========*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 0.8;
+}
+
+.container {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+.login_txt_main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login_txt_main .login_item {
+  width: 370px;
+}
+.login_txt_main .login_item .auth_heading {
+  color: #03014C;
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "'Open Sans', sans-serif";
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+.login_txt_main .login_item .provider_login {
+  border: 1px solid #03014C;
+  padding: 20px 35px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.login_txt_main .login_item .provider_login span {
+  color: #03014C;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "'Open Sans', sans-serif";
+}
+.login_txt_main .login_item .from_main {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+.login_txt_main .login_item .from_main .login_input_filed {
+  width: 100%;
+  color: #03014C;
+  font-size: 14px;
+  font-family: "'Open Sans', sans-serif";
+  font-weight: 400;
+}
+.login_txt_main .login_item .from_main .login_input_filed::-moz-placeholder {
+  color: #03014C;
+  font-size: 14px;
+  font-family: "'Open Sans', sans-serif";
+  font-weight: 400;
+}
+.login_txt_main .login_item .from_main .login_input_filed::placeholder {
+  color: #03014C;
+  font-size: 14px;
+  font-family: "'Open Sans', sans-serif";
+  font-weight: 400;
+}
+.login_txt_main .login_item .from_main .submitBtn {
+  background-color: #5F35F5 !important;
+  padding: 20px 0 !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  font-family: "'Open Sans', sans-serif" !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.login_txt_main .login_item .sign_txt {
+  color: #03014C;
+  font-size: 14px;
+  font-family: "'Open Sans', sans-serif";
+  font-weight: 400;
+  margin-top: 25px;
+}
+.login_txt_main .login_item .sign_txt a {
+  color: #EA6C00;
+  font-weight: 700;
+  text-transform: capitalize;
+  padding-left: 5px;
+}
+
+.login_imgbox {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.login_imgbox img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*========== Login css end ===========*//*# sourceMappingURL=login.css.map */
