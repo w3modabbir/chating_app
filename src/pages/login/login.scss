@@ -9,7 +9,19 @@
     justify-content: center;
     align-items: center;
     .login_item{
-        width: 480px;
+        width: 360px;
+        .forgat_pass{
+            color: $singColor;
+            font-size: 20px;
+            font-family: $openSans;
+            font-weight: 400;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all linear .3s;
+            &:hover{
+                text-decoration:underline ;
+            }
+        }
         .auth_heading{
             color: $loginColor;
             font-size: 34px;
@@ -43,18 +55,31 @@
             display: flex;
             flex-direction: column;
             row-gap: 40px;
+            position: relative;
             .login_input_filed{
                 width: 100%;
                 color: $loginColor;
                 font-size: 14px;
                 font-family: $openSans;
                 font-weight: 400;
+               
                 &::placeholder{
                     color: $loginColor;
                     font-size: 14px;
                     font-family: $openSans;
                     font-weight: 400;
                 }
+            }
+            .pass_btn{
+                border: none;
+                outline: none;
+                background: transparent;
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 20px;
             }
             .submitBtn{
                 background-color: $primaryBg !important;
@@ -70,7 +95,7 @@
         }
         .sign_txt{
             color: $loginColor;
-            font-size: 14px;
+            font-size: 20px;
             font-family: $openSans;
             font-weight: 400;
             margin-top: 25px;
@@ -96,10 +121,46 @@
     }
 }
 
-
-
-
-
+.forgat_pass{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    .forgat_iconbtn{
+        outline: none;
+        border: none;
+        background: transparent;
+        font-size: 25px;
+        background-color: $singColor;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: $commonClolor;
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        cursor: pointer;
+    }
+    h2{
+        color: $loginColor;
+        font-size: 30px;
+        font-family: $openSans;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    .forgatbtn{
+        background-color: $primaryBg !important;
+        padding: 10px 0 !important;
+        color: $commonClolor !important;
+        font-size: 20px !important;
+        font-family: $openSans !important;
+        font-weight: 600 !important;
+        text-transform: capitalize !important;
+        border-radius: 8px !important;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    }
+}
 
 
 /*========== Login css end ===========*/
