@@ -30,4 +30,129 @@ p {
   margin: 0 auto;
 }
 
+.register_txt_main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register_txt_main .register_item {
+  width: 480px;
+}
+.register_txt_main .register_item .auth_heading {
+  color: #11175D;
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "'Nunito', sans-serif";
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+.register_txt_main .register_item .peragrap {
+  color: #4D4D4D;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "'Nunito', sans-serif";
+}
+.register_txt_main .register_item .provider_login {
+  border: 1px solid #11175D;
+  padding: 20px 35px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.register_txt_main .register_item .provider_login span {
+  color: #11175D;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "'Nunito', sans-serif";
+}
+.register_txt_main .register_item .from_main {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  position: relative;
+}
+.register_txt_main .register_item .from_main .error {
+  position: absolute;
+  width: 100%;
+  color: red;
+  font-family: "'Nunito', sans-serif";
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.register_txt_main .register_item .from_main .register_input_filed {
+  width: 100%;
+  color: #11175D;
+  font-size: 14px;
+  font-family: "'Nunito', sans-serif";
+  font-weight: 400;
+  padding-bottom: 20px;
+}
+.register_txt_main .register_item .from_main .register_input_filed::-moz-placeholder {
+  color: #11175D;
+  font-size: 14px;
+  font-family: "'Nunito', sans-serif";
+  font-weight: 400;
+}
+.register_txt_main .register_item .from_main .register_input_filed::placeholder {
+  color: #11175D;
+  font-size: 14px;
+  font-family: "'Nunito', sans-serif";
+  font-weight: 400;
+}
+.register_txt_main .register_item .from_main .pass_btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  bottom: 148px;
+  font-size: 20px;
+  z-index: 9999;
+  display: block;
+}
+.register_txt_main .register_item .from_main .submitBtn {
+  background-color: #5F35F5 !important;
+  padding: 20px 0 !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  font-family: "'Nunito', sans-serif" !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.register_txt_main .register_item .sign_txt {
+  color: #11175D;
+  font-size: 20px;
+  font-family: "'Nunito', sans-serif";
+  font-weight: 400;
+  margin-top: 25px;
+}
+.register_txt_main .register_item .sign_txt a {
+  color: #EA6C00;
+  font-weight: 700;
+  text-transform: capitalize;
+  padding-left: 5px;
+}
+
+.register_imgbox {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.register_imgbox img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*========== registration css start here ===========*/
 /*========== registration css end ===========*//*# sourceMappingURL=registration.css.map */
