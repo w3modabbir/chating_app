@@ -56,13 +56,23 @@
             flex-direction: column;
             row-gap: 40px;
             position: relative;
+            .error{
+                position: absolute;
+                width: 100%;
+                color: red;
+                font-family: $nunito;
+                font-size: 16px;
+                text-transform: capitalize;
+                font-weight: 500;
+                
+            }
             .login_input_filed{
                 width: 100%;
                 color: $loginColor;
                 font-size: 14px;
                 font-family: $openSans;
                 font-weight: 400;
-               
+                margin-bottom: 20px;
                 &::placeholder{
                     color: $loginColor;
                     font-size: 14px;

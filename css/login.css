@@ -88,12 +88,22 @@ p {
   row-gap: 40px;
   position: relative;
 }
+.login_txt_main .login_item .from_main .error {
+  position: absolute;
+  width: 100%;
+  color: red;
+  font-family: "'Nunito', sans-serif";
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
 .login_txt_main .login_item .from_main .login_input_filed {
   width: 100%;
   color: #03014C;
   font-size: 14px;
   font-family: "'Open Sans', sans-serif";
   font-weight: 400;
+  margin-bottom: 20px;
 }
 .login_txt_main .login_item .from_main .login_input_filed::-moz-placeholder {
   color: #03014C;

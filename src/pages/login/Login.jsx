@@ -16,6 +16,54 @@ import { Modal} from '@mui/material';
 import { RxCross1 } from "react-icons/rx";
 
 const Login = () => {
+  let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+  
+  let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+  
+  let passwordFormat = /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
+
+  const [passwordError, setPasswordError] = useState("");
+
+  let [error, setError] = useState({
+    email: "",
+    password: ""
+  });
+  let [loginData, setLoginData] = useState({
+    email: "",
+    fullName: "",
+    password: ""
+  });
+
+  let handlLogineform = (e) =>{
+    let {name, value} = e.target
+    setLoginData({
+      ...loginData,[name]:value
+    })
+  }
+
+  let handleSubmit = () =>{
+    if(!loginData.email){
+      setError({email: "Please enter your email"})
+    }else if(!loginData.email.match(emailFormat)){
+      setError({email: "Invalid email address"})
+    }else if(!loginData.password){
+      setError({password: "Please Your Password"})
+    }else if(!loginData.password.match(passwordFormat)){
+      setError({password: "Invalid email address"})
+    }else if(loginData.password.length < 8 || loginData.password.length > 20) {
+      setPasswordError( "Password must be between 8 and 20 characters.");
+    }
+    else{
+      setError({
+        email: "",
+        fullName: "",
+        password: ""
+      })
+      setPasswordError("");
+      console.log(loginData);
+    }
+  }
+
   let [showPass,  setShowPass] = useState(false)
 
   let handleShowPass = () =>{
@@ -54,14 +102,23 @@ const Login = () => {
                   </div>
                   <div className='from_main'>
                     <div>
-                      <Input name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>
+                      <Input onChange={handlLogineform} name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>
+                      {error.email &&
+                        <p className='error'>{error.email}</p>
+                      }
                     </div>
                     <div>
-                      <Input name="password" type={showPass ? "text" : "password"} variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password"/>
+                      <Input onChange={handlLogineform} name="password" type={showPass ? "text" : "password"} variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password"/>
                       <button className='pass_btn' onClick={handleShowPass}>{showPass ? <LiaEyeSolid /> : <HiMiniEyeSlash />}
                       </button>
+                      {error.password &&
+                        <p className='error'>{error.password}</p>
+                      }
+                      {passwordError.password && 
+                      <div style={{ color: 'red' }}>{passwordError}</div>
+                      }
                     </div>
-                    <CustomBtn styling="submitBtn" variant="Contained" text="Login to Continue"/>
+                    <CustomBtn onClick={handleSubmit} styling="submitBtn" variant="Contained" text="Login to Continue"/>
                   </div>
                   <div>
                     <AuthNavigate style="sign_txt" link="/registration" linktext="Sign up" text="Don’t have an account ?"/>
@@ -92,8 +149,13 @@ const Login = () => {
             <div className='forgat_pass'>
               <button className='forgat_iconbtn' onClick={handleModleClose}><RxCross1 /></button>
               <h2>Find Your Account</h2>
-              <Input type="email" variant="standard" lebelTxt="Email Adress"/>
-              <CustomBtn styling="forgatbtn"   text="Send Link" variant="Contained"/>
+              <div>
+                <Input  type="email" variant="standard" lebelTxt="Email Adress"/>
+                {error.email &&
+                   <p className='error'>{error.email}</p>
+                }
+              </div>
+              <CustomBtn  styling="forgatbtn"   text="Send Link" variant="Contained"/>
             </div>
           </Box>
       </Modal>

@@ -21,13 +21,21 @@ const Registration = () => {
     setShowPass((prevShowPass) => !prevShowPass);
   }
   //* password shwo usestate start
-
+  
   //* registerdata validation start
+  let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+  
+  let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+  
+  let passwordFormat = /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
+
   let [error, setError] = useState({
     email: "",
     fullName: "",
     password: ""
   })
+  // let [passwordLengthError, setPasswordLengthError] = useState('');
+  
   let [registerData, setRegisterData] = useState({
     email: "",
     fullName: "",
@@ -43,18 +51,28 @@ const Registration = () => {
   
   let handleSubmit = () => {
     if(!registerData.email){
-        setError({email: "email nai"})
-    }else if(!registerData.fullName){
-      setError({fullName: "name nai"})
-    }else if(!registerData.password){
-      setError({password: "pass nai"})
+        setError({email: "Please enter your email"})
+    }else if(!registerData.email.match(emailFormat)){
+      setError({email: "Invalid email address"})
     }
+    else if(!registerData.fullName){
+      setError({fullName: "Your Name"})
+    }else if(!registerData.password){
+      setError({password: "Please Your Password"})
+    }else if(!registerData.password.match(passwordFormat)){
+      setError({password: "Please Enter Your Password"})
+    }
+    // else if (!registerData.password.length < 8 || registerData.password.length > 20){
+    //   setPasswordLengthError("Password must be between 8 and 20 characters.")
+    //   setError({password: ""})
+    // }
     else{
       setError({
         email: "",
         fullName: "",
         password: ""
       })
+      // setPasswordLengthError('');
       console.log(registerData);
     }
   }
