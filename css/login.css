@@ -171,6 +171,14 @@ p {
   gap: 30px;
   position: relative;
 }
+.forgat_pass .error {
+  color: red;
+  font-family: "'Nunito', sans-serif";
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-top: 10px;
+}
 .forgat_pass .forgat_iconbtn {
   outline: none;
   border: none;

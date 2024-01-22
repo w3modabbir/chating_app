@@ -16,14 +16,15 @@ import { Modal} from '@mui/material';
 import { RxCross1 } from "react-icons/rx";
 
 const Login = () => {
-  let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-  
-  let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
-  
+// ======== Login Validation Part Start ==========//
+let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+
+let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+
   let passwordFormat = /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
-
+  
   const [passwordError, setPasswordError] = useState("");
-
+  
   let [error, setError] = useState({
     email: "",
     password: ""
@@ -33,14 +34,14 @@ const Login = () => {
     fullName: "",
     password: ""
   });
-
+  
   let handlLogineform = (e) =>{
     let {name, value} = e.target
     setLoginData({
       ...loginData,[name]:value
     })
   }
-
+  
   let handleSubmit = () =>{
     if(!loginData.email){
       setError({email: "Please enter your email"})
@@ -63,21 +64,56 @@ const Login = () => {
       console.log(loginData);
     }
   }
+  // ======== Login Validation Part End ==========//
+  
+  //======== Forgat Part Validation start ==========//
+  // let [forgatData , setForgatData] = useState({
+  //   email: ""
+  // })
+  // let [forgatError, setForgatError] = useState({
+  //   email: ""
+  // })
+  
+  // let handleForgatForm = (e) =>{
+  //   let {name, value} = e.target
+  //   setForgatData({
+  //     ...forgatData,[name]:value
+  //   })
+  // }
+  // let handleForgatSubmit = () =>{
+  //   if(!forgatData.email){
+  //     setForgatError({email: "Please enter your email"})
+  //   }
+  //   else if(!forgatData.email.match(emailFormat)){
+  //     setForgatError({email: "Invalid email address"})
+  //   }
+  //   else{
+  //     setForgatError({
+  //       email: ""
+  //     })
+  //     console.log(forgatData);
+  //   }
+  // }
+//======== Forgat Part Validation End ==========//
 
-  let [showPass,  setShowPass] = useState(false)
+//======== Password Icon Show part start ========//
 
-  let handleShowPass = () =>{
-    setShowPass((prevShowPass) => !prevShowPass);
-  }
+let [showPass,  setShowPass] = useState(false)
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+let handleShowPass = () =>{
+  setShowPass((prevShowPass) => !prevShowPass);
+}
 
-  const handleModleClose = () => {
-    setOpen(false);
-  }
+const [open, setOpen] = React.useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
 
+const handleModleClose = () => {
+  setOpen(false);
+}
+//======== Password Icon Show part end ========//
+
+//======== forgat part MUI style part ==========//
   const style = {
     position: 'absolute',
     top: '50%',
@@ -151,9 +187,10 @@ const Login = () => {
               <h2>Find Your Account</h2>
               <div>
                 <Input  type="email" variant="standard" lebelTxt="Email Adress"/>
-                {error.email &&
-                   <p className='error'>{error.email}</p>
-                }
+                {/* {forgatError.email &&
+                   <p className='error'>{forgatError.email}</p>
+                   
+                } */}
               </div>
               <CustomBtn  styling="forgatbtn"   text="Send Link" variant="Contained"/>
             </div>
