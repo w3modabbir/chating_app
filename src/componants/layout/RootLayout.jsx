@@ -1,7 +1,8 @@
 import { Box, Grid } from '@mui/material'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import './rootlayout.scss';
+import './rootLayout.scss';
+
 import SideBer from '../sidBer/SideBer';
 
 const RootLayout = () => {
