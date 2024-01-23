@@ -100,7 +100,7 @@ const Registration = () => {
                     }
                   </div>
                   <div>
-                    <Input onChange={handleForm} name="password" type={showPass ? "text" : "password"} variant="outlined" lebelTxt="Password" style="register_input_filed" placeholder="Enter your password"/>
+                    <Input onChange={handleForm} name="password" type={showPass ? "text" : "password"} variant="outlined" lebelTxt="Password" style="register_input_filed" placeholder="Enter your password" autocomplete />
                     {error.password &&
                       <p className='error'>{error.password}</p>
                     }
