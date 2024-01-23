@@ -1,0 +1,74 @@
+@import "../../../sass/common/common.scss";
+@import "../../../sass/common/variable.scss";
+
+
+.user_main{
+    margin-top: 17px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    padding:  0 25px;
+    overflow-y:scroll;
+    height: 230px;
+   .user_item{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    padding-bottom: 13px;
+    display: flex;
+    column-gap: 14px;
+    align-items: center;
+    &:last-child{
+        border-bottom: 0;
+    }
+    .user_img_box{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .friend_info_main{
+        flex-basis: 75%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .user_name{
+            h5{
+                color: $primary;
+                font-size: 18px;
+                font-weight: 600;
+                font-family: $poppins;
+                text-transform: capitalize;
+                padding-bottom: 10px;
+            }
+            p{
+                color: $peraColor;
+                font-size: 18px;
+                font-weight: 600;
+                font-family: $poppins;
+                text-transform: capitalize;  
+            }
+        }
+        .button{
+            background-color: $primaryBg;
+            border-radius: 3px;
+            color: $commonClolor;
+            border: none;
+            outline: none;
+            text-transform: capitalize;
+            padding: 14px 20px;
+            text-transform: capitalize;
+            font-family: $poppins;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+
+   } 
+
+}

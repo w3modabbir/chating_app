@@ -1,22 +1,8 @@
 @import "../../sass/common/common.scss";
 @import "../../sass/common/variable.scss";
 
-.user_main{
-    margin-top: 17px;
+.home_main{
     display: flex;
-    flex-direction: column;
-   .user_item{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-    .user_img_box{
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        overflow: hidden;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-   } 
+    gap: 24px;
+    flex-wrap: wrap;
 }
