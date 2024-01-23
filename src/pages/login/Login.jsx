@@ -136,7 +136,8 @@ const handleModleClose = () => {
                     <img src={GoogleImg}/>
                     <span>Login with Google</span>
                   </div>
-                  <div className='from_main'>
+                 <form>
+                 <div className='from_main'>
                     <div>
                       <Input onChange={handlLogineform} name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>
                       {error.email &&
@@ -156,6 +157,7 @@ const handleModleClose = () => {
                     </div>
                     <CustomBtn onClick={handleSubmit} styling="submitBtn" variant="Contained" text="Login to Continue"/>
                   </div>
+                 </form>
                   <div>
                     <AuthNavigate style="sign_txt" link="/registration" linktext="Sign up" text="Don’t have an account ?"/>
                     <p onClick={handleOpen} className='forgat_pass'>

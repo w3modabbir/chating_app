@@ -85,6 +85,7 @@ const Registration = () => {
             <div className='register_item'>
                 <SectionHeading style="auth_heading" text="Get started with easily register"/>
                 <PeraGrap style="peragrap" text="Free register and you can enjoy it"/>
+                <form>
                 <div className='from_main'>
                   <div>
                     <Input onChange={handleForm} name="email" type="email" variant="outlined" lebelTxt="Email Adress" style="register_input_filed" placeholder="Your Email"/>
@@ -109,6 +110,7 @@ const Registration = () => {
                   </div>
                   <CustomBtn onClick={handleSubmit} styling="submitBtn" variant="Contained" text="Sign up"/>
                 </div>
+                </form>
                 <div>
                   <AuthNavigate style="sign_txt" link="/" linktext="Sign In" text="Already  have an account ? "/>
                 </div>
