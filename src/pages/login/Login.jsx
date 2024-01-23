@@ -145,7 +145,7 @@ const handleModleClose = () => {
                       }
                     </div>
                     <div>
-                      <Input onChange={handlLogineform} name="password" type={showPass ? "text" : "password"} variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password" autocomplete="current-password"/>
+                      <Input onChange={handlLogineform} name="password" type={showPass ? "text" : "password"} variant="standard" lebelTxt="Password" style="login_input_filed" placeholder="Enter your password" autocomplete="current-password" value={loginData.password}/>
                       <button className='pass_btn' onClick={handleShowPass}>{showPass ? <LiaEyeSolid /> : <HiMiniEyeSlash />}
                       </button>
                       {error.password &&
