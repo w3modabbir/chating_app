@@ -8,17 +8,16 @@ import {
 import Login from './pages/login/Login';
 import Registration from './pages/registration/Registration';
 import Home from './pages/home/Home';
-import RootLayout from './componants/layout/RootLayout';;
-import Message from './pages/message/Message';
 import Notification from './pages/notification/Notification';
 import Settings from './pages/setting/Settings';
 import LoginOut from './pages/loginout/LoginOut';
+import RootLayout from "./componants/layout/RootLayout";
+import Message from "./pages/message/Message";
 
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-
       <>
         <Route  path='/' element={<Login/>} />
         <Route  path='/registration' element={<Registration/>} />
