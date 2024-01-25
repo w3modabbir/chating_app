@@ -14,9 +14,12 @@ import { LiaEyeSolid } from "react-icons/lia";
 import { Alert } from '@mui/material';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Audio, Vortex } from 'react-loader-spinner'
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const auth = getAuth();
+  const navigate = useNavigate();
+
   const [loder, setLoder] = useState(false)
   //* password shwo usestate start
   let [showPass,  setShowPass] = useState(false)
@@ -85,6 +88,7 @@ const Registration = () => {
           fullName: "",
           password: ""
         })
+        navigate("/")
       }).catch((error) =>{
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -96,8 +100,7 @@ const Registration = () => {
 
       })
       setTimeout(() => {
-        setLoder(false)
-        
+        setLoder(false) 
       }, 2000);
 
     }
