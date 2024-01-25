@@ -42,7 +42,8 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
     })
   }
   
-  let handleSubmit = () =>{
+  let handleSubmit = (e) =>{
+    e.preventDefault()
     if(!loginData.email){
       setError({email: "Please enter your email"})
     }else if(!loginData.email.match(emailFormat)){
@@ -70,7 +71,8 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
 
 let [showPass,  setShowPass] = useState(false)
 
-let handleShowPass = () =>{
+let handleShowPass = (e) =>{
+  e.preventDefault()
   setShowPass((prevShowPass) => !prevShowPass);
 }
 
@@ -98,7 +100,8 @@ const handleModleClose = () => {
       ...forgaFormtData,[name]:value
     })
   }
-  let handleForgetSubmit = () =>{
+  let handleForgetSubmit = (e) =>{
+    e.preventDefault()
     if(!forgaFormtData.forgetemail){
       setForgaFormtError({forgetemail: "Please enter your email"})
     }
@@ -137,7 +140,7 @@ const handleModleClose = () => {
                     <img src={GoogleImg}/>
                     <span>Login with Google</span>
                   </div>
-                 <form>
+                 <form action='#' method='post'>
                  <div className='from_main'>
                     <div>
                       <Input onChange={handlLogineform} name="email" type="email" variant="standard" lebelTxt="Email Adress" style="login_input_filed" placeholder="Your Email"/>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import "./registration.scss"
@@ -13,13 +13,16 @@ import { HiMiniEyeSlash } from "react-icons/hi2";
 import { LiaEyeSolid } from "react-icons/lia";
 import { Alert } from '@mui/material';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Audio, Vortex } from 'react-loader-spinner'
 
 const Registration = () => {
   const auth = getAuth();
+  const [loder, setLoder] = useState(false)
   //* password shwo usestate start
   let [showPass,  setShowPass] = useState(false)
   
-  let handleShowPass = () =>{
+  let handleShowPass = (e) =>{
+    e.preventDefault()
     setShowPass((prevShowPass) => !prevShowPass);
   }
   //* password shwo usestate start
@@ -69,6 +72,7 @@ const Registration = () => {
     //   setError({password: ""})
     // }
     else{
+      setLoder(true)
       setError({
         email: "",
         fullName: "",
@@ -91,6 +95,10 @@ const Registration = () => {
         }
 
       })
+      setTimeout(() => {
+        setLoder(false)
+        
+      }, 2000);
 
     }
   }
@@ -106,19 +114,19 @@ const Registration = () => {
                 <form>
                 <div className='from_main'>
                   <div>
-                    <Input onChange={handleForm} value={setRegisterData.email}  name="email" type="email" variant="outlined" lebelTxt="Email Adress" style="register_input_filed" placeholder="Your Email"/>
+                    <Input value={registerData.email} onChange={handleForm}  name="email" type="email" variant="outlined" lebelTxt="Email Adress" style="register_input_filed" placeholder="Your Email"/>
                     {error.email &&
                      <p className='error'>{error.email}</p>
                     }
                   </div>
                   <div>
-                    <Input onChange={handleForm} value={setRegisterData.fullName}  name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name" />
+                    <Input value={registerData.fullName} onChange={handleForm}   name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name" />
                     {error.fullName &&
                       <p className='error'>{error.fullName}</p>
                     }
                   </div>
                   <div>
-                    <Input onChange={handleForm} name="password" type={showPass ? "text" : "password"} variant="outlined" lebelTxt="Password" style="register_input_filed" placeholder="Enter your password" autocomplete="current-password" value={registerData.password} />
+                    <Input value={registerData.password}  onChange={handleForm} name="password" type={showPass ? "text" : "password"} variant="outlined" lebelTxt="Password" style="register_input_filed" placeholder="Enter your password" autocomplete="current-password"/>
                     {error.password &&
                       <p className='error'>{error.password}</p>
                     }
@@ -126,7 +134,19 @@ const Registration = () => {
                     <button className='pass_btn' onClick={handleShowPass}>{showPass ? <LiaEyeSolid /> : <HiMiniEyeSlash />}
                     </button>
                   </div>
-                  <CustomBtn onClick={handleSubmit} styling="submitBtn" variant="Contained" text="Sign up"/>
+                    {loder ?
+                      <Vortex
+                      visible={true}
+                      height="80"
+                      width="80"
+                      ariaLabel="vortex-loading"
+                      wrapperStyle={{}}
+                      wrapperClass="vortex-wrapper"
+                      colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                      />
+                      :
+                      <CustomBtn onClick={handleSubmit} styling="submitBtn" variant="Contained" text="Sign up"/>
+                    }
                 </div>
                 </form>
                 <div>
