@@ -189,7 +189,7 @@ const handleModleClose = () => {
               <button className='forgat_iconbtn' onClick={handleModleClose}><RxCross1 /></button>
               <h2>Find Your Account</h2>
               <div>
-                <Input onChange={handleForgetData}  type="email" variant="standard" name="forgetemail"  lebelTxt="Email Adress" value autocomplete="current-password"/>
+                <Input onChange={handleForgetData}  type="email" variant="standard" name="forgetemail"  lebelTxt="Email Adress"/>
                 {forgaFormtError.forgetemail &&
                    <p className='error'>{forgaFormtError.forgetemail}</p>  
                 }

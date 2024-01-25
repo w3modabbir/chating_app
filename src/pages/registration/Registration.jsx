@@ -12,8 +12,10 @@ import PeraGrap from '../../componants/PeraGrap';
 import { HiMiniEyeSlash } from "react-icons/hi2";
 import { LiaEyeSolid } from "react-icons/lia";
 import { Alert } from '@mui/material';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Registration = () => {
+  const auth = getAuth();
   //* password shwo usestate start
   let [showPass,  setShowPass] = useState(false)
   
@@ -72,8 +74,24 @@ const Registration = () => {
         fullName: "",
         password: ""
       })
-      // setPasswordLengthError('');
-      console.log(registerData);
+      createUserWithEmailAndPassword(auth, registerData.email, registerData.password).then((userCredential)=>{
+        console.log(userCredential);
+        setRegisterData({
+          email: "",
+          fullName: "",
+          password: ""
+        })
+      }).catch((error) =>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if(errorCode == "auth/email-already-in-use"){
+          setError({email: "email allready exist"})
+        }else{
+          setError({email: ""})
+        }
+
+      })
+
     }
   }
   //* registerdata validation start
@@ -88,13 +106,13 @@ const Registration = () => {
                 <form>
                 <div className='from_main'>
                   <div>
-                    <Input onChange={handleForm} name="email" type="email" variant="outlined" lebelTxt="Email Adress" style="register_input_filed" placeholder="Your Email"/>
+                    <Input onChange={handleForm} value={setRegisterData.email}  name="email" type="email" variant="outlined" lebelTxt="Email Adress" style="register_input_filed" placeholder="Your Email"/>
                     {error.email &&
                      <p className='error'>{error.email}</p>
                     }
                   </div>
                   <div>
-                    <Input onChange={handleForm} name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name" />
+                    <Input onChange={handleForm} value={setRegisterData.fullName}  name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name" />
                     {error.fullName &&
                       <p className='error'>{error.fullName}</p>
                     }
