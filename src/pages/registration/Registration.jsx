@@ -12,7 +12,7 @@ import PeraGrap from '../../componants/PeraGrap';
 import { HiMiniEyeSlash } from "react-icons/hi2";
 import { LiaEyeSolid } from "react-icons/lia";
 import { Alert } from '@mui/material';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification  } from "firebase/auth";
 import { Audio, Vortex } from 'react-loader-spinner'
 import { useNavigate } from "react-router-dom";
 
@@ -82,13 +82,14 @@ const Registration = () => {
         password: ""
       })
       createUserWithEmailAndPassword(auth, registerData.email, registerData.password).then((userCredential)=>{
-        console.log(userCredential);
+        sendEmailVerification(auth.currentUser).then(()=>{
+          navigate("/")
+        })
         setRegisterData({
           email: "",
           fullName: "",
           password: ""
         })
-        navigate("/")
       }).catch((error) =>{
         const errorCode = error.code;
         const errorMessage = error.message;

@@ -14,8 +14,12 @@ import { useState } from 'react';
 import { LiaEyeSolid } from "react-icons/lia";
 import { Modal} from '@mui/material';
 import { RxCross1 } from "react-icons/rx";
+import { getAuth, signInWithEmailAndPassword, signOut   } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const auth = getAuth();
+  const navigate = useNavigate();
 // ======== Login Validation Part Start ==========//
 let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
 
@@ -56,13 +60,32 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
       setPasswordError( "Password must be between 8 and 20 characters.");
     }
     else{
+      signInWithEmailAndPassword(auth, loginData.email, loginData.password).then((userCredential)=>{
+        if(userCredential.user.emailVerified){
+          navigate("/home")
+        }else{
+          signOut(auth).then(()=>{
+            console.log("pleass verify your email");
+            console.log("logout done");
+
+          })
+        }
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if(errorCode == "auth/invalid-credential"){
+          setError({email: "Email or Password Wrong"})
+        }else{
+          setError({email: ""})
+        }
+
+      });
       setError({
         email: "",
         fullName: "",
         password: ""
       })
       setPasswordError("");
-      console.log(loginData);
     }
   }
   // ======== Login Validation Part End ==========//
