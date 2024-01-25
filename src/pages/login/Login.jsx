@@ -65,36 +65,6 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
     }
   }
   // ======== Login Validation Part End ==========//
-  
-  //======== Forgat Part Validation start ==========//
-  // let [forgatData , setForgatData] = useState({
-  //   email: ""
-  // })
-  // let [forgatError, setForgatError] = useState({
-  //   email: ""
-  // })
-  
-  // let handleForgatForm = (e) =>{
-  //   let {name, value} = e.target
-  //   setForgatData({
-  //     ...forgatData,[name]:value
-  //   })
-  // }
-  // let handleForgatSubmit = () =>{
-  //   if(!forgatData.email){
-  //     setForgatError({email: "Please enter your email"})
-  //   }
-  //   else if(!forgatData.email.match(emailFormat)){
-  //     setForgatError({email: "Invalid email address"})
-  //   }
-  //   else{
-  //     setForgatError({
-  //       email: ""
-  //     })
-  //     console.log(forgatData);
-  //   }
-  // }
-//======== Forgat Part Validation End ==========//
 
 //======== Password Icon Show part start ========//
 
@@ -112,6 +82,37 @@ const handleModleClose = () => {
   setOpen(false);
 }
 //======== Password Icon Show part end ========//
+
+
+  //======== Forgat Part Validation start ==========//
+  let [forgaFormtData , setForgaFormtData] = useState({
+    forgetemail: "",
+  })
+  let [forgaFormtError, setForgaFormtError] = useState({
+    forgetemail: "",
+  })
+  
+  let handleForgetData = (e) =>{
+    let {name, value} = e.target
+    setForgaFormtData({
+      ...forgaFormtData,[name]:value
+    })
+  }
+  let handleForgetSubmit = () =>{
+    if(!forgaFormtData.forgetemail){
+      setForgaFormtError({forgetemail: "Please enter your email"})
+    }
+    else if(!forgaFormtData.forgetemail.match(emailFormat)){
+      setForgaFormtError({forgetemail: "Invalid email address"})
+    }
+    else{
+      setForgaFormtError({
+        forgetemail: "",
+      })
+      console.log(forgaFormtData);
+    }
+  }
+//======== Forgat Part Validation End ==========//
 
 //======== forgat part MUI style part ==========//
   const style = {
@@ -188,13 +189,12 @@ const handleModleClose = () => {
               <button className='forgat_iconbtn' onClick={handleModleClose}><RxCross1 /></button>
               <h2>Find Your Account</h2>
               <div>
-                <Input  type="email" variant="standard" lebelTxt="Email Adress"/>
-                {/* {forgatError.email &&
-                   <p className='error'>{forgatError.email}</p>
-                   
-                } */}
+                <Input onChange={handleForgetData}  type="email" variant="standard" name="forgetemail"  lebelTxt="Email Adress" value autocomplete="current-password"/>
+                {forgaFormtError.forgetemail &&
+                   <p className='error'>{forgaFormtError.forgetemail}</p>  
+                }
               </div>
-              <CustomBtn  styling="forgatbtn"   text="Send Link" variant="Contained"/>
+              <CustomBtn  onClick={handleForgetSubmit} styling="forgatbtn"   text="Send Link" variant="Contained"/>
             </div>
           </Box>
       </Modal>

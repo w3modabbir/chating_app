@@ -94,7 +94,7 @@ const Registration = () => {
                     }
                   </div>
                   <div>
-                    <Input onChange={handleForm} name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name"/>
+                    <Input onChange={handleForm} name="fullName" type="text" variant="outlined" lebelTxt="Full Name" style="register_input_filed" placeholder="Enter Your Name" />
                     {error.fullName &&
                       <p className='error'>{error.fullName}</p>
                     }
