@@ -16,6 +16,8 @@ import { Modal} from '@mui/material';
 import { RxCross1 } from "react-icons/rx";
 import { getAuth, signInWithEmailAndPassword, signOut   } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import TostifyReact from '../../componants/TostifyReact';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const auth = getAuth();
@@ -61,13 +63,21 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
     }
     else{
       signInWithEmailAndPassword(auth, loginData.email, loginData.password).then((userCredential)=>{
+        //Email Verification Start
         if(userCredential.user.emailVerified){
           navigate("/home")
         }else{
           signOut(auth).then(()=>{
-            console.log("pleass verify your email");
-            console.log("logout done");
-
+            toast.error('Please Verify Your Email', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
           })
         }
       }).catch((error) => {
@@ -153,6 +163,7 @@ const handleModleClose = () => {
   };
   return (
     <>
+    <TostifyReact/>
       <Box>
         <Grid container spacing={0}>
           <Grid item xs={6}>

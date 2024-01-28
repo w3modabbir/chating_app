@@ -12,13 +12,17 @@ import PeraGrap from '../../componants/PeraGrap';
 import { HiMiniEyeSlash } from "react-icons/hi2";
 import { LiaEyeSolid } from "react-icons/lia";
 import { Alert } from '@mui/material';
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification  } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile  } from "firebase/auth";
 import { Audio, Vortex } from 'react-loader-spinner'
 import { useNavigate } from "react-router-dom";
+
+
 
 const Registration = () => {
   const auth = getAuth();
   const navigate = useNavigate();
+  const db = getDatabase();
 
   const [loder, setLoder] = useState(false)
   //* password shwo usestate start
@@ -83,7 +87,19 @@ const Registration = () => {
       })
       createUserWithEmailAndPassword(auth, registerData.email, registerData.password).then((userCredential)=>{
         sendEmailVerification(auth.currentUser).then(()=>{
-          navigate("/")
+          updateProfile(auth.currentUser, {
+            displayName:registerData.fullName,
+            photoURL: "https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-375-456327-512.png" 
+          }).then(()=>{
+            set(ref(db, 'users/' + userCredential.user.uid), {
+              username: userCredential.user.displayName,
+              email: userCredential.user.email,
+              profile_picture : userCredential.user.photoURL
+            }).then(()=>{
+              navigate("/")
+              console.log(userCredential);
+            })
+          })
         })
         setRegisterData({
           email: "",
