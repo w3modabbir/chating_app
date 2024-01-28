@@ -10,7 +10,6 @@ import Registration from './pages/registration/Registration';
 import Home from './pages/home/Home';
 import Notification from './pages/notification/Notification';
 import Settings from './pages/setting/Settings';
-import LoginOut from './pages/loginout/LoginOut';
 import RootLayout from "./componants/layout/RootLayout";
 import Message from "./pages/message/Message";
 
@@ -26,7 +25,6 @@ function App() {
           <Route  path='/message' element={<Message/>} />
           <Route  path='/notification' element={<Notification/>} />
           <Route  path='/settings' element={<Settings/>} />
-          <Route  path='/loginout' element={<LoginOut/>} />
         </Route>
       </>
     )

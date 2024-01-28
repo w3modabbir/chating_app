@@ -42,11 +42,9 @@ const SideBer = () => {
             </ul>
         </div>
 
-        <div className='user_login'>
-            <Link to="loginout">
-                <AiOutlineLogout />
-            </Link>
-        </div>
+        <button className='user_login'>
+        <AiOutlineLogout />
+        </button>
     </div>
   )
 }

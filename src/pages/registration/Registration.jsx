@@ -86,6 +86,11 @@ const Registration = () => {
         password: ""
       })
       createUserWithEmailAndPassword(auth, registerData.email, registerData.password).then((userCredential)=>{
+        setRegisterData({
+          email: "",
+          fullName: "",
+          password: ""
+        })
         sendEmailVerification(auth.currentUser).then(()=>{
           updateProfile(auth.currentUser, {
             displayName:registerData.fullName,
@@ -97,15 +102,11 @@ const Registration = () => {
               profile_picture : userCredential.user.photoURL
             }).then(()=>{
               navigate("/")
-              console.log(userCredential);
+
             })
           })
         })
-        setRegisterData({
-          email: "",
-          fullName: "",
-          password: ""
-        })
+
       }).catch((error) =>{
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -118,7 +119,7 @@ const Registration = () => {
       })
       setTimeout(() => {
         setLoder(false) 
-      }, 2000);
+      }, 500);
 
     }
   }
