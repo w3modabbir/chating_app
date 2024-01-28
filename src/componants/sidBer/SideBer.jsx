@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./sidebar.scss";
 import userImg from '../../assets/images/user.jpg';
 import { AiOutlineLogout } from "react-icons/ai";
@@ -7,10 +7,39 @@ import { IoHome } from "react-icons/io5";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { IoNotifications } from "react-icons/io5";
 import { IoSettingsSharp } from "react-icons/io5";
+import { getAuth,  signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import TostifyReact from '../TostifyReact';
+import { toast } from 'react-toastify';
 
 const SideBer = () => {
+    const auth = getAuth();
+    const navigate = useNavigate();
+    // let [tostify, setTostify] = useState(false)
+    let handleLogout = () =>{
+        signOut(auth).then(()=>{
+            setTimeout(() => {
+                toast.success('Logout Success', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
+            },1000);
+            navigate("/")
+            
+        })
+    }
+
+
   return (
-    <div className='sideBar_box'>
+    <>
+        <TostifyReact/>
+        <div className='sideBar_box'>
         <div className='sidebar_img_part'>
             <div className="sidebar_img">
                 <img src={userImg} alt="Img Not Found" />
@@ -42,10 +71,11 @@ const SideBer = () => {
             </ul>
         </div>
 
-        <button className='user_login'>
+        <button className='user_login' onClick={handleLogout}>
         <AiOutlineLogout />
         </button>
-    </div>
+        </div>
+    </>
   )
 }
 
