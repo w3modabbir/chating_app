@@ -18,10 +18,13 @@ import { getAuth, signInWithEmailAndPassword, signOut   } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import TostifyReact from '../../componants/TostifyReact';
 import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux'
+import { loginuser } from '../../slices/UserSlice';
 
 const Login = () => {
   const auth = getAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 // ======== Login Validation Part Start ==========//
 let userName = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
 
@@ -65,7 +68,11 @@ let emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
       signInWithEmailAndPassword(auth, loginData.email, loginData.password).then((userCredential)=>{
         //Email Verification Start
         if(userCredential.user.emailVerified){
+          // local storage data save 
+          localStorage.setItem("user", JSON.stringify(userCredential.user));
+          dispatch(loginuser(userCredential.user))
           navigate("/home")
+          console.log(userCredential.user);
         }else{
           signOut(auth).then(()=>{
             toast.error('Please Verify Your Email', {

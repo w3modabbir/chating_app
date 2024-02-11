@@ -36,7 +36,6 @@ const SideBer = () => {
         })
     }
 
-
   return (
     <>
         <TostifyReact/>
