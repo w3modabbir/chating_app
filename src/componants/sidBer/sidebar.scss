@@ -13,10 +13,12 @@
     .sidebar_img_part{
         h3{
             color: $commonClolor;
-            font-size: 18px;
+            font-size: 23px;
             font-family: $poppins;
-            font-weight: 500;
+            font-weight: 700;
             margin-top: 10px;
+            text-transform: capitalize;
+            text-align: center;
         }
         .sidebar_img{
             width: 100px;
