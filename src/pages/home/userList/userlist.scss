@@ -62,11 +62,15 @@
             color: $commonClolor;
             border: none;
             outline: none;
+            cursor: pointer;
+            svg{
+                display: inline-block;
+                line-height: 30px;
+            }
         }
     }
 
    } 
-
    .bloocks{
         display: flex;
         justify-content: center;

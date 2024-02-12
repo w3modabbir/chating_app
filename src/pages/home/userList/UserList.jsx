@@ -4,12 +4,18 @@ import GroupCard from '../../../componants/home/GroupCard'
 import Images from '../../../utilities/Images'
 import userImg from '../../../assets/images/user.jpg'
 import { FaPlus } from "react-icons/fa";
-import { getDatabase, ref, onValue } from "firebase/database";
-import { Blocks } from 'react-loader-spinner'
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import 'react-loading-skeleton/dist/skeleton.css'
+import ListingWithThumbnail from '../../../componants/ReactSkeleton'
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify';
+import TostifyReact from '../../../componants/TostifyReact'
 
-const UserList = () => {
+const UserList = (props) => {
   const [userList, setUserList] = useState()
   const db = getDatabase();
+  const data = useSelector((state) => state.loginuserdata.value)
+  console.log(data);
 
   // user data read operation 
   useEffect(()=>{
@@ -17,17 +23,47 @@ const UserList = () => {
     onValue(userRef, (snapshot) => {
       let arr = []
       snapshot.forEach((item)=>{
-        arr.push({...item.val(),id:item.key})
+        if(data.uid != item.key){
+          arr.push({...item.val(),id:item.key})
+
+        }
       })
       setUserList(arr)
   
     });
 
   },[])
-  console.log(userList);
+
+  // friend request part 
+  let handleFRequest = (friendRequestInfo) =>{
+    console.log(friendRequestInfo);
+    set(push(ref(db, 'friendRequestInfo')), {
+     senderId: data.uid,
+     senderName: data.displayName,
+     senderPhoto: data.photoURL,
+     senderEmail: data.email, 
+      // receiver part 
+      receiverid: friendRequestInfo.id,
+      receivername: friendRequestInfo.username,
+      receiveremail: friendRequestInfo.email,
+      receiverimg: friendRequestInfo.profile_picture,
+    }).then(()=>{
+      toast.success("Friend Request Send Successful", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    })
+  }
 
   return (
    <>
+   <TostifyReact/>
     <GroupCard cardtitle="User List">
           <div className='user_main'>
             {userList && userList.length > 0
@@ -42,25 +78,14 @@ const UserList = () => {
                 <h5>{item.username}</h5>
                 <p>MERN Developer</p>
               </div>
-                <button>
+                <button onClick={()=>handleFRequest(item)}>
                   <FaPlus />
                 </button>
               </div>
               </div>
               ))
               :
-              <div className='bloocks'>
-                <Blocks
-                height="80"
-                width="80"
-                color="#4fa94d"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
-                visible={true}
-                />
-              </div>
-            
+              <ListingWithThumbnail/>
             }
         </div>
     </GroupCard>
