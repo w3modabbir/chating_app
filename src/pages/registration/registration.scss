@@ -11,7 +11,7 @@
     .register_item{
         width: 480px;
         .auth_heading{
-            color: $bothColor;
+            color: $bothcolor;
             font-size: 34px;
             font-weight: 700;
             font-family: $nunito;
@@ -25,14 +25,14 @@
             font-family: $nunito;
         }
         .provider_login{
-            border: 1px solid $bothColor;
+            border: 1px solid $bothcolor;
             padding: 20px 35px;
             border-radius: 5px;
             display: inline-flex;
             align-items: center;
             column-gap: 10px;
             span{
-                color: $bothColor;
+                color: $bothcolor;
                 font-size: 14px;
                 font-weight: 600;
                 font-family: $nunito;
@@ -56,13 +56,13 @@
             }
             .register_input_filed{
                 width: 100%;
-                color: $bothColor;
+                color: $bothcolor;
                 font-size: 14px;
                 font-family: $nunito;
                 font-weight: 400;
                 padding-bottom: 20px;
                 &::placeholder{
-                    color: $bothColor;
+                    color: $bothcolor;
                     font-size: 14px;
                     font-family: $nunito;
                     font-weight: 400;
@@ -81,9 +81,9 @@
                 display: block;
             }
             .submitBtn{
-                background-color: $primaryBg !important;
+                background-color: $primarybg !important;
                 padding: 20px 0 !important;
-                color: $commonClolor !important;
+                color: $commonclolor !important;
                 font-size: 20px !important;
                 font-family: $nunito !important;
                 font-weight: 600 !important;
@@ -93,13 +93,13 @@
             }
         }
         .sign_txt{
-            color: $bothColor;
+            color: $bothcolor;
             font-size: 20px;
             font-family: $nunito;
             font-weight: 400;
             margin-top: 25px;
             a{
-                color: $singColor;
+                color: $singcolor;
                 font-weight: 700;
                 text-transform: capitalize;
                 padding-left: 5px;

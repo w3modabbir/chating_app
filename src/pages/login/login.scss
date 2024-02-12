@@ -11,9 +11,9 @@
     .login_item{
         width: 360px;
         .forgat_pass{
-            color: $singColor;
+            color: $singcolor;
             font-size: 20px;
-            font-family: $openSans;
+            font-family: $opensans;
             font-weight: 400;
             margin-top: 25px;
             cursor: pointer;
@@ -23,10 +23,10 @@
             }
         }
         .auth_heading{
-            color: $loginColor;
+            color: $logincolor;
             font-size: 34px;
             font-weight: 700;
-            font-family: $openSans;
+            font-family: $opensans;
             text-transform: capitalize;
             margin-bottom: 30px;
         }
@@ -34,20 +34,20 @@
             color: $scendary;
             font-size: 20px;
             font-weight: 400;
-            font-family: $openSans;
+            font-family: $opensans;
         }
         .provider_login{
-            border: 1px solid $loginColor;
+            border: 1px solid $logincolor;
             padding: 20px 35px;
             border-radius: 5px;
             display: inline-flex;
             align-items: center;
             column-gap: 10px;
             span{
-                color: $loginColor;
+                color: $logincolor;
                 font-size: 14px;
                 font-weight: 600;
-                font-family: $openSans;
+                font-family: $opensans;
             }
         }
         .from_main{
@@ -68,15 +68,15 @@
             }
             .login_input_filed{
                 width: 100%;
-                color: $loginColor;
+                color: $logincolor;
                 font-size: 14px;
-                font-family: $openSans;
+                font-family: $opensans;
                 font-weight: 400;
                 margin-bottom: 20px;
                 &::placeholder{
-                    color: $loginColor;
+                    color: $logincolor;
                     font-size: 14px;
-                    font-family: $openSans;
+                    font-family: $opensans;
                     font-weight: 400;
                 }
             }
@@ -92,11 +92,11 @@
                 font-size: 20px;
             }
             .submitBtn{
-                background-color: $primaryBg !important;
+                background-color: $primarybg !important;
                 padding: 20px 0 !important;
-                color: $commonClolor !important;
+                color: $commonclolor !important;
                 font-size: 20px !important;
-                font-family: $openSans !important;
+                font-family: $opensans !important;
                 font-weight: 600 !important;
                 text-transform: capitalize !important;
                 border-radius: 8px;
@@ -104,13 +104,13 @@
             }
         }
         .sign_txt{
-            color: $loginColor;
+            color: $logincolor;
             font-size: 20px;
-            font-family: $openSans;
+            font-family: $opensans;
             font-weight: 400;
             margin-top: 25px;
             a{
-                color: $singColor;
+                color: $singcolor;
                 font-weight: 700;
                 text-transform: capitalize;
                 padding-left: 5px;
@@ -150,10 +150,10 @@
         border: none;
         background: transparent;
         font-size: 25px;
-        background-color: $singColor;
+        background-color: $singcolor;
         width: 40px;
         height: 40px;
-        color: $commonClolor;
+        color: $commonclolor;
         position: absolute;
         right: -30px;
         top: -30px;
@@ -163,18 +163,18 @@
         justify-content: center;
     }
     h2{
-        color: $loginColor;
+        color: $logincolor;
         font-size: 30px;
-        font-family: $openSans;
+        font-family: $opensans;
         font-weight: 600;
         text-transform: capitalize;
     }
     .forgatbtn{
-        background-color: $primaryBg !important;
+        background-color: $primarybg !important;
         padding: 10px 0 !important;
-        color: $commonClolor !important;
+        color: $commonclolor !important;
         font-size: 20px !important;
-        font-family: $openSans !important;
+        font-family: $opensans !important;
         font-weight: 600 !important;
         text-transform: capitalize !important;
         border-radius: 8px !important;

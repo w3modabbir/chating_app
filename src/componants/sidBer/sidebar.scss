@@ -3,7 +3,7 @@
 
 
 .sideBar_box{
-    background-color: $primaryBg;
+    background-color: $primarybg;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,7 +12,7 @@
     padding: 50px 0;
     .sidebar_img_part{
         h3{
-            color: $commonClolor;
+            color: $commonclolor;
             font-size: 23px;
             font-family: $poppins;
             font-weight: 700;
@@ -40,7 +40,7 @@
         gap: 40px;
         li{
             a{
-                color: $commonClolor;
+                color: $commonclolor;
                 padding: 15px 110px ;
                 display: inline-block;
                 border-top-left-radius: 10px;
@@ -51,8 +51,8 @@
                 
             }
             .active{
-                background-color: $commonBg;
-                color: $loginColor;
+                background-color: $commonbg;
+                color: $logincolor;
                 position: relative;
                 &::after{
                     width: 10px;
@@ -61,7 +61,7 @@
                     content: '';
                     right: 3px;
                     top: 0;
-                    background-color: $primaryBg;
+                    background-color: $primarybg;
                     border-top-left-radius: 10px;
                     border-bottom-left-radius: 10px;
                 }
@@ -77,7 +77,7 @@
         border: none;
         outline: none;
         font-size: 40px;
-        color: $commonClolor;
+        color: $commonclolor;
         font-weight: 600;
         font-family: $poppins;
         cursor: pointer;
