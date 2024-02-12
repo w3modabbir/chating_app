@@ -35,7 +35,6 @@ const SideBer = () => {
     //         navigate("/home")
     //     }
     // })
-    console.log(window.location);
     // let [tostify, setTostify] = useState(false)
     let handleLogout = () =>{
         signOut(auth).then(()=>{
@@ -80,7 +79,6 @@ const SideBer = () => {
                 <img src={data && data.photoURL} alt="Img Not Found" />
             </div>
             <h3 className='userName'>{data && data.displayName}</h3>
-            <p>{data && data.email}</p>
         </div>
         <div>
             <ul className='navigation_part'>
