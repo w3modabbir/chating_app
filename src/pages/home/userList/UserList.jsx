@@ -15,7 +15,6 @@ const UserList = (props) => {
   const [userList, setUserList] = useState()
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
-  console.log(data);
 
   // user data read operation 
   useEffect(()=>{
