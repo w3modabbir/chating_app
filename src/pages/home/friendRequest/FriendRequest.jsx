@@ -4,7 +4,11 @@ import Images from '../../../utilities/Images'
 import userImg from '../../../assets/images/user.jpg'
 import './friendrequest.scss'
 import { useSelector, useDispatch } from 'react-redux'
-import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+import ListingWithThumbnail from '../../../componants/ReactSkeleton'
+import { ImCross } from "react-icons/im";
+import TostifyReact from '../../../componants/TostifyReact'
+import { toast } from 'react-toastify'
 
 const FriendRequest = () => {
   const db = getDatabase();
@@ -28,9 +32,25 @@ const FriendRequest = () => {
   
     },[])
 
-
+    // cancle request 
+    let handleCancleRequest = (friendRequestCancle)=>{
+      console.log(friendRequestCancle);
+      remove(ref(db, "friendRequestInfo/" + friendRequestCancle.id)).then(()=>{
+        toast.success('Friend Request Cancle Success..', {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      })
+    }
   return (
     <>
+    <TostifyReact/>
       <GroupCard cardtitle="Friend  Request">
       <div className='user_main'>
       {frienRequest && frienRequest.length > 0 ?
@@ -47,11 +67,14 @@ const FriendRequest = () => {
             <button>
               accept
             </button>
+            <button className='button' onClick={()=>handleCancleRequest(item)}>
+             <ImCross />
+            </button>
           </div>
         </div>
            ))
            :
-           <h2>no request </h2>
+           <h2 className='request'>Friend Request is No Found...</h2>
          
          }
       </div>

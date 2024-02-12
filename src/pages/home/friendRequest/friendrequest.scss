@@ -58,15 +58,32 @@
             color: $commonClolor;
             border: none;
             outline: none;
-            padding: 14px 20px;
+            padding: 14px 18px;
             text-transform: capitalize;
             font-family: $poppins;
             font-weight: 500;
             font-size: 15px;
             cursor: pointer;
         }
+        .button{
+            padding: 8px 10px;
+            margin-left: 5px;
+        }
     }
 
    } 
+
+   
+   .request{
+        color: $singColor;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: $poppins;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+   }
 
 }
