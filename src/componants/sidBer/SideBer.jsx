@@ -15,10 +15,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loginuser } from '../../slices/UserSlice';
 import { Vortex } from 'react-loader-spinner'
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { IoCloudUploadOutline } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 
 
 // Modal style Profile photo
@@ -45,6 +44,9 @@ const SideBer = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleModleClose = () => {
+        setOpen(false);
+      }
     
     useEffect(()=>{
         if(!data){
@@ -91,15 +93,16 @@ const SideBer = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-        <div className='propile_modal'>
             <Box sx={style}>
-                <h2 className='profile_heading'>Upload Profile Photo</h2>
-                <div className='profile_photo'>
-                    <img src={data && data.photoURL} alt="Img Not Found" />
+                <div className='propile_modal'>
+                    <button className='forgat_iconbtn' onClick={handleModleClose}><RxCross1 /></button>
+                    <h2 className='profile_heading'>Upload Profile Photo</h2>
+                    <div className='profile_photo'>
+                        <img src={data && data.photoURL} alt="Img Not Found" />
+                    </div>
+                    <input type="file" />
                 </div>
-                <input type="file" />
             </Box>
-        </div>
         </Modal>
     {/* Profile Photo Modal end */}
     {loder ?
