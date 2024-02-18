@@ -35,7 +35,6 @@ const UserList = (props) => {
 
   // friend request part 
   let handleFRequest = (friendRequestInfo) =>{
-    console.log(friendRequestInfo);
     set(push(ref(db, 'friendRequestInfo')), {
      senderId: data.uid,
      senderName: data.displayName,

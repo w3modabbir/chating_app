@@ -13,6 +13,7 @@ import { toast } from 'react-toastify'
 const FriendRequest = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
+  console.log(data);
   const [frienRequest, setFriendRequest] = useState()
 
     // user data read operation 
@@ -34,7 +35,6 @@ const FriendRequest = () => {
 
     // cancle request 
     let handleCancleRequest = (friendRequestCancle)=>{
-      console.log(friendRequestCancle);
       remove(ref(db, "friendRequestInfo/" + friendRequestCancle.id)).then(()=>{
         toast.success('Friend Request Cancle Success..', {
           position: "top-right",
@@ -50,7 +50,20 @@ const FriendRequest = () => {
     }
   // accept reques operation 
   let handleAcceptRequest = (acceptrequestinfo) =>{
-      console.log(acceptrequestinfo);
+    console.log(acceptrequestinfo);
+    set(push(ref(db, 'friends')), {
+     whoSendname: acceptrequestinfo.senderName,
+     whoSendid: acceptrequestinfo.senderId,
+     whoSendemail: acceptrequestinfo.senderEmail,
+     whoSendphoto: acceptrequestinfo.senderPhoto,
+     whoReceivename : data.displayName,
+     whoReceiveuid : data.uid,
+     whoReceivephoto: data.photoURL,
+     whoReceiveemail: data.email
+    }).then(()=>{
+      remove(ref(db, "friendRequestInfo/" + acceptrequestinfo.id))
+    })
+    toast("Request  Accept successfully")
   }
   return (
     <>
