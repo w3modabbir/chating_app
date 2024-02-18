@@ -48,6 +48,10 @@ const FriendRequest = () => {
           });
       })
     }
+  // accept reques operation 
+  let handleAcceptRequest = (acceptrequestinfo) =>{
+      console.log(acceptrequestinfo);
+  }
   return (
     <>
     <TostifyReact/>
@@ -64,7 +68,7 @@ const FriendRequest = () => {
             <h5>{item.senderName}</h5>
             <p>MERN Developer</p>
           </div>
-            <button>
+            <button onClick={()=>handleAcceptRequest(item)}>
               accept
             </button>
             <button className='button' onClick={()=>handleCancleRequest(item)}>

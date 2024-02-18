@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 0.8;
+}
+
+.container {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+.search_main {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 385px;
+}
+.search_main .search_item {
+  display: flex;
+  -moz-column-gap: 14px;
+       column-gap: 14px;
+  align-items: center;
+  padding: 25px;
+  justify-content: center;
+}
+.search_main .search_item .search_icon_txt {
+  flex-basis: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_main .search_item .search_icon_txt .group_dots {
+  width: 30px;
+  height: 30px;
+  background: rgb(244, 238, 238);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}/*# sourceMappingURL=searchbar.css.map */
