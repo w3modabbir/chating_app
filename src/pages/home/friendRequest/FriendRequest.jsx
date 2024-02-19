@@ -57,7 +57,7 @@ const FriendRequest = () => {
      whoSendemail: acceptrequestinfo.senderEmail,
      whoSendphoto: acceptrequestinfo.senderPhoto,
      whoReceivename : data.displayName,
-     whoReceiveuid : data.uid,
+     whoReceiveid : data.uid,
      whoReceivephoto: data.photoURL,
      whoReceiveemail: data.email
     }).then(()=>{
