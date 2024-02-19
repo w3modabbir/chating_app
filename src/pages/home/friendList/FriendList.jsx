@@ -5,13 +5,14 @@ import userImg from '../../../assets/images/user.jpg'
 import { FaPlus } from "react-icons/fa";
 import './friendlist.scss'
 import { useSelector, useDispatch } from 'react-redux'
-import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
 import { toast } from 'react-toastify';
 import TostifyReact from '../../../componants/TostifyReact'
 
 const FriendList = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
+  console.log(data);
   const [friendList, setFriendList] = useState()
 
     // user data read operation 
@@ -30,8 +31,24 @@ const FriendList = () => {
       });
   
     },[])
+
+    // friend block operation
+    let handlefriendblock = (blockfriend) =>{
+      set(push(ref(db, 'block')), {
+        blockusername: blockfriend.whoReceivename,
+        blockuserid: blockfriend.whoReceiveid,
+        blockuserphoto: blockfriend.whoReceivephoto,
+        blockuseremail: blockfriend.whoReceiveemail,
+        whoblockname: data.displayName,
+        whoblockid: data.uid,
+        whoblockemail: data.email,
+        whoblockphoto: data.photoURL
+      }).then(()=>{
+        remove(ref(db, "friends/" + blockfriend.id))
+      })
+    }
   
-console.log(friendList);
+
   return (
    <>
     <GroupCard cardtitle="Friends">
@@ -60,14 +77,14 @@ console.log(friendList);
             }
             <p>MERN Developer</p>
           </div>
-            <button className='button'>
+            <button className='button' onClick={()=>handlefriendblock(item)}>
               block
             </button>
           </div>
         </div>
         ))
         :
-        <h2>nai</h2>
+        <h2 className='no_priend'>No Friend</h2>
       }
 
     </div>

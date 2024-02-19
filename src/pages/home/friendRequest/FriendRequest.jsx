@@ -13,7 +13,6 @@ import { toast } from 'react-toastify'
 const FriendRequest = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
-  console.log(data);
   const [frienRequest, setFriendRequest] = useState()
 
     // user data read operation 
@@ -50,7 +49,6 @@ const FriendRequest = () => {
     }
   // accept reques operation 
   let handleAcceptRequest = (acceptrequestinfo) =>{
-    console.log(acceptrequestinfo);
     set(push(ref(db, 'friends')), {
      whoSendname: acceptrequestinfo.senderName,
      whoSendid: acceptrequestinfo.senderId,
