@@ -15,6 +15,8 @@ const UserList = (props) => {
   const [userList, setUserList] = useState()
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
+  const [frienRequest, setFriendRequest] = useState([])
+  const [friendList, setFriendList] = useState([])
 
   // user data read operation 
   useEffect(()=>{
@@ -58,6 +60,24 @@ const UserList = (props) => {
         });
     })
   }
+
+   // user data read operation 
+   useEffect(()=>{
+    const friendRequestRef = ref(db, 'friendRequestInfo');
+    onValue(friendRequestRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        if(item.val().senderId == data.uid){
+          arr.push(item.val().receiverid + item.val().senderId)
+
+        }
+      })
+      setFriendRequest(arr)
+  
+    });
+    
+  },[])
+  console.log(frienRequest);
 
   return (
    <>

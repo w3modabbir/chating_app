@@ -7,13 +7,13 @@ const GroupCard = ({children, cardtitle}) => {
   return (
     <>
       <div className='groupcard'>
-          <div className='group_heading'>
-              <h4>{cardtitle} </h4>
-              <div className='group_dots'>
-              <BiDotsVerticalRounded />
-              </div>
-          </div>
-          {children}
+            <div className='group_heading'>
+                <h4>{cardtitle} </h4>
+                <div className='group_dots'>
+                <BiDotsVerticalRounded />
+                </div>
+            </div>
+            {children}
       </div>
     </>
   )

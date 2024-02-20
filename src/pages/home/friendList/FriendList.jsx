@@ -12,7 +12,6 @@ import TostifyReact from '../../../componants/TostifyReact'
 const FriendList = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
-  console.log(data);
   const [friendList, setFriendList] = useState()
 
     // user data read operation 
