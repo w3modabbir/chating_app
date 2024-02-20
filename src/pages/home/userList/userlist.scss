@@ -15,6 +15,7 @@
     display: flex;
     column-gap: 14px;
     align-items: center;
+    justify-content: space-between;
     &:last-child{
         border-bottom: 0;
     }
@@ -53,8 +54,7 @@
             }
         }
         button{
-            width: 30px;
-            height: 30px;
+            padding: 12px 20px;
             background-color: $primarybg;
             border-radius: 3px;
             text-align: center;
@@ -63,10 +63,18 @@
             border: none;
             outline: none;
             cursor: pointer;
-            svg{
-                display: inline-block;
-                line-height: 30px;
-            }
+            border-radius: 5px;
+            font-size: 18px;
+            color: $commonclolor;
+            text-transform: capitalize;
+            font-weight: 500;
+            font-family: $poppins;
+
+        }
+
+        .button{
+            display: flex;
+            column-gap: 10px;
         }
     }
 

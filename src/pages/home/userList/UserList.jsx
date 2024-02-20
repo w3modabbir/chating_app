@@ -4,7 +4,7 @@ import GroupCard from '../../../componants/home/GroupCard'
 import Images from '../../../utilities/Images'
 import userImg from '../../../assets/images/user.jpg'
 import { FaPlus } from "react-icons/fa";
-import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
 import 'react-loading-skeleton/dist/skeleton.css'
 import ListingWithThumbnail from '../../../componants/ReactSkeleton'
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,6 +15,7 @@ const UserList = (props) => {
   const [userList, setUserList] = useState()
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
+  console.log(data);
   const [frienRequest, setFriendRequest] = useState([])
   const [friendList, setFriendList] = useState([])
 
@@ -34,6 +35,7 @@ const UserList = (props) => {
     });
 
   },[])
+  console.log(userList);
 
   // friend request part 
   let handleFRequest = (friendRequestInfo) =>{
@@ -60,8 +62,24 @@ const UserList = (props) => {
         });
     })
   }
+     // user Friends 
+     useEffect(()=>{
+      const friendRef = ref(db, 'friends');
+      onValue(friendRef, (snapshot) => {
+        let arr = []
+        snapshot.forEach((item)=>{
+          if(data.uid == item.val().whoReceiveid || data.uid == item.val().whoSendid){
+            arr.push(item.val().whoReceiveid + item.val().whoSendid)
+            
+          }
+        })
+        setFriendList(arr)
+    
+      });
+  
+    },[])
 
-   // user data read operation 
+   // user friend request data read operation 
    useEffect(()=>{
     const friendRequestRef = ref(db, 'friendRequestInfo');
     onValue(friendRequestRef, (snapshot) => {
@@ -77,7 +95,15 @@ const UserList = (props) => {
     });
     
   },[])
-  console.log(frienRequest);
+ 
+
+  // user friend request cancle 
+  let handleCancle = (cancleinfo) =>{
+    console.log(cancleinfo.id);
+    remove(ref(db, "friendRequestInfo/" + cancleinfo.id)).then(()=>{
+      
+    })
+  }
 
   return (
    <>
@@ -96,9 +122,24 @@ const UserList = (props) => {
                 <h5>{item.username}</h5>
                 <p>MERN Developer</p>
               </div>
-                <button onClick={()=>handleFRequest(item)}>
-                  <FaPlus />
-                </button>
+              {
+                frienRequest.length > 0 && frienRequest.includes(item.id + data.uid) || frienRequest.includes(data.uid + item.id)
+                  ?
+                  <>
+                    <div className="button">
+                    <button>pending</button>
+                    <button onClick={()=>handleCancle(item)}>cancel</button>
+                    </div>
+                  </>
+                  :
+                friendList.includes(data.uid + item.id) || friendList.includes(item.id + data.uid)
+                  ?
+                  <button>friend</button>
+                  :
+                  <button onClick={()=>handleFRequest(item)}>
+                    Add
+                  </button>
+              }
               </div>
               </div>
               ))

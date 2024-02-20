@@ -79,12 +79,14 @@ const FriendRequest = () => {
             <h5>{item.senderName}</h5>
             <p>MERN Developer</p>
           </div>
+           <div className="button_main">
             <button onClick={()=>handleAcceptRequest(item)}>
-              accept
-            </button>
-            <button className='button' onClick={()=>handleCancleRequest(item)}>
-             <ImCross />
-            </button>
+                accept
+              </button>
+              <button className='button' onClick={()=>handleCancleRequest(item)}>
+              remove
+              </button>
+           </div>
           </div>
         </div>
            ))
