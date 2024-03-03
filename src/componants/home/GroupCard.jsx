@@ -10,7 +10,7 @@ const GroupCard = ({children, cardtitle}) => {
             <div className='group_heading'>
                 <h4>{cardtitle} </h4>
                 <div className='group_dots'>
-                <BiDotsVerticalRounded />
+                  <BiDotsVerticalRounded />
                 </div>
             </div>
             {children}
@@ -18,5 +18,4 @@ const GroupCard = ({children, cardtitle}) => {
     </>
   )
 }
-
 export default GroupCard

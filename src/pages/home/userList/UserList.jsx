@@ -8,18 +8,18 @@ import { getDatabase, ref, onValue, set, push, remove } from "firebase/database"
 import 'react-loading-skeleton/dist/skeleton.css'
 import ListingWithThumbnail from '../../../componants/ReactSkeleton'
 import { useSelector, useDispatch } from 'react-redux'
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import TostifyReact from '../../../componants/TostifyReact'
 
 const UserList = (props) => {
   const [userList, setUserList] = useState()
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
-  console.log(data);
+  // console.log(data);
   const [frienRequest, setFriendRequest] = useState([])
   const [friendList, setFriendList] = useState([])
 
-  // user data read operation 
+  // All user data read operation 
   useEffect(()=>{
     const userRef = ref(db, 'users');
     onValue(userRef, (snapshot) => {
@@ -31,15 +31,13 @@ const UserList = (props) => {
         }
       })
       setUserList(arr)
-  
     });
 
   },[])
-  console.log(userList);
 
-  // friend request part 
+  // add friend request part 
   let handleFRequest = (friendRequestInfo) =>{
-    set(push(ref(db, 'friendRequestInfo')), {
+    set(ref(db, 'friendRequestInfo/' + friendRequestInfo.id), {
      senderId: data.uid,
      senderName: data.displayName,
      senderPhoto: data.photoURL,
@@ -52,14 +50,14 @@ const UserList = (props) => {
     }).then(()=>{
       toast.success("Friend Request Send Successful", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     })
   }
      // user Friends 
@@ -68,7 +66,7 @@ const UserList = (props) => {
       onValue(friendRef, (snapshot) => {
         let arr = []
         snapshot.forEach((item)=>{
-          if(data.uid == item.val().whoReceiveid || data.uid == item.val().whoSendid){
+          if( item.val().whoReceiveid == data.uid  || item.val().whoSendid ==  data.uid) {
             arr.push(item.val().whoReceiveid + item.val().whoSendid)
             
           }
@@ -98,16 +96,27 @@ const UserList = (props) => {
  
 
   // user friend request cancle 
-  let handleCancle = (cancleinfo) =>{
-    console.log(cancleinfo.id);
-    remove(ref(db, "friendRequestInfo/" + cancleinfo.id)).then(()=>{
-      
+  let handleCancle = (canclerequest) =>{
+    remove(ref(db, "friendRequestInfo/" + canclerequest.id)).then(()=>{
+
     })
   }
 
   return (
+    
    <>
-   <TostifyReact/>
+     <ToastContainer
+    position="top-right"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="dark"
+    />
     <GroupCard cardtitle="User List">
           <div className='user_main'>
             {userList && userList.length > 0
