@@ -31,10 +31,40 @@ const Message = () => {
       <div className='message_user_body'>
         <h3 className='list_heading'>Friend List</h3>
         <div className="sms_user_main">
-          {friendList && friendList.map((item, index)=>(
-            <div key={index} className="sms_user_item"></div>
+          {friendList && friendList.lenght > 0
+          ?
+           friendList.map((item, index)=>(
+            // <div key={index} className="sms_user_item"></div>
+            <div key={index} className="user_item">
+          <div className="user_img_box">
+            {data.uid == item.whoSendid
+              ?
+              <Images source={item.whoReceivephoto} alt="img not found"/>
+              :
+              <Images source={item.whoSendphoto} alt="img not found"/>
+
+            }
+          </div>
+          <div className='friend_info_main'>
+          <div className='user_name'>
+            {data.uid == item.whoSendid
+              ?
+              <h3>{item.whoReceivename}</h3>
+              :
+              <h3>{item.whoSendname}</h3>
+
+            }
+            <p>MERN Developer</p>
+          </div>
+            <button className='button'>
+              block
+            </button>
+          </div>
+        </div>
 
           ))
+          :
+          <h2 className='no_friend_props'>No Friend</h2>
           }
         </div>
       </div>
