@@ -1,0 +1,39 @@
+@import '../../sass/common/common.scss';
+@import '../../sass/common/variable.scss';
+
+.message_main{
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    .message_user_body{
+        width: 30%;
+        height: 720px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        .list_heading{
+            text-transform: capitalize;
+            font-weight: 500;
+            font-family: $nunito;
+            font-size: 25px;
+            color: $commonclolor;
+            padding: 18px 23px;
+            background-color: $primarybg;
+           border-top-left-radius: 5px;
+           border-top-right-radius: 5px;
+        }
+        .sms_user_main{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            .sms_user_item{
+                width: 100%;
+                height: 80px;
+                background-color: black;
+            }
+        }
+    }
+    .message_user_sms{
+        width: 70%;
+        background: teal;
+        height: 100%;
+    }
+}
