@@ -5,7 +5,7 @@ import { getDatabase, ref, onValue, set, push, remove } from "firebase/database"
 import Images from '../../utilities/Images';
 import userImg from '../../../src/assets/images/user.jpg'
 import Input from '../../componants/Input';
-// import { activeuser } from '../../slices/ActiveUserSlice';
+import { activeuser } from '../../slices/ActiveUserSlice';
 import { IoSend } from "react-icons/io5";
 
 
@@ -141,7 +141,6 @@ const Message = () => {
           {allMessage && allMessage.map((item, index)=>(
           <div key={index} className="send_msg">
             <p>{item.message}</p>
-            <h3>hello</h3>
           </div>
 
           ))

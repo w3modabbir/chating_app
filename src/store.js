@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './slices/UserSlice'
-// import ActiveUserSlice from './slices/ActiveUserSlice'
+import ActiveUserSlice from './slices/ActiveUserSlice'
 
 
 
@@ -9,6 +9,6 @@ import userSlice from './slices/UserSlice'
 export const store = configureStore({
   reducer: {
     loginuserdata: userSlice,
-    // activeuserdata: ActiveUserSlice,
+    activeuserdata: ActiveUserSlice,
   },
 })
