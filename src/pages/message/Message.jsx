@@ -10,9 +10,11 @@ import { activeuser } from '../../slices/ActiveUserSlice';
 
 const Message = () => {
   const db = getDatabase();
-  const data = useSelector((state) => state.loginuserdata.value)
-  const [friendList, setFriendList] = useState()
-  const dispatch = useDispatch()
+  const data = useSelector((state) => state.loginuserdata.value);
+  const activechat = useSelector((state) => state.activeuserdata.value);
+  const [friendList, setFriendList] = useState();
+  const dispatch = useDispatch();
+  console.log(activechat);
 
     // user data read operation 
     useEffect(()=>{
@@ -32,7 +34,7 @@ const Message = () => {
     },[])
 
     let handleUser = (i)=>{
-      dispatch(activeuser)
+      dispatch(activeuser(i))
     }
 
   return (
@@ -78,10 +80,24 @@ const Message = () => {
       <div className='message_user_sms'>
         <div className="sms_box_heading">
           <div className="user_img_box">
-            <Images source={userImg} alt="img not found"/>
+            {activechat && 
+            activechat.whoSendphoto == data.uid
+            ?
+            <Images source={activechat.whoReceivephoto} alt="img not found"/>
+            :
+            <Images source={activechat.whoSendphoto} alt="img not found"/>
+            }
           </div>
          <div>
-          <h2 className='name_item'>Masum</h2>
+          <h2 className='name_item'>
+            {activechat && 
+            activechat.whoSendid == data.uid
+            ?
+            activechat.whoReceivename
+            :
+            activechat.whoSendname
+            }
+          </h2>
          </div>
         </div>
         <div className="msg_main">

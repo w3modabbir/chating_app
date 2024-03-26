@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './slices/UserSlice'
-import { activeUserSlice } from './slices/ActiveUserSlice'
+import  activeUserSlice from './slices/ActiveUserSlice'
 
 
 
