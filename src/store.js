@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './slices/UserSlice'
-import  activeUserSlice from './slices/ActiveUserSlice'
+import ActiveUserSlice from './slices/ActiveUserSlice'
+
+
 
 
 
 export const store = configureStore({
   reducer: {
     loginuserdata: userSlice,
-    activeuserdata: activeUserSlice,
+    activeuserdata: ActiveUserSlice,
   },
 })
