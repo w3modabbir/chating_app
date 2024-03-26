@@ -3,13 +3,16 @@ import './message.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
 import Images from '../../utilities/Images';
-
+import userImg from '../../../src/assets/images/user.jpg'
+import Input from '../../componants/Input';
+import { activeuser } from '../../slices/ActiveUserSlice';
 
 
 const Message = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value)
   const [friendList, setFriendList] = useState()
+  const dispatch = useDispatch()
 
     // user data read operation 
     useEffect(()=>{
@@ -28,7 +31,9 @@ const Message = () => {
   
     },[])
 
-
+    let handleUser = (i)=>{
+      dispatch(activeuser)
+    }
 
   return (
     <div className='message_main'>
@@ -38,7 +43,7 @@ const Message = () => {
           {friendList && friendList.length > 0
           ?
            friendList.map((item, index)=>(
-            <div key={index} className="sms_user_item">
+            <div onClick={()=>handleUser(item)} key={index} className="sms_user_item">
               <div className="user_img_box">
                 {data.uid == item.whoSendid
                   ?
@@ -70,7 +75,27 @@ const Message = () => {
           }
         </div>
       </div>
-      <div className='message_user_sms'>Message</div>
+      <div className='message_user_sms'>
+        <div className="sms_box_heading">
+          <div className="user_img_box">
+            <Images source={userImg} alt="img not found"/>
+          </div>
+         <div>
+          <h2 className='name_item'>Masum</h2>
+         </div>
+        </div>
+        <div className="msg_main">
+          <div className="send_msg">
+            <p>Hello</p>
+          </div>
+          <div className="receive_msg">
+            <p>Hello</p>
+          </div>
+        </div>
+        <div className="msg_footer">
+            <Input placeholder="Your messenge"/>
+        </div>
+      </div>
     </div>
   )
 }
