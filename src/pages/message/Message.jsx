@@ -62,7 +62,7 @@ const Message = () => {
       onValue(messageRef, (snapshot) => {
         let arr = []
         snapshot.forEach((item)=>{
-          if(data.uid == item.val().whoReceiveid || data.uid == item.val().whoSendid){
+          if(data.uid == item.val().recieverid || data.uid == item.val().senderid){
             arr.push({...item.val(),id:item.key})
             
             }
@@ -139,8 +139,8 @@ const Message = () => {
         </div>
         <div className="msg_main">
           {allMessage && allMessage.map((item, index)=>(
-          <div className="send_msg">
-            <p>Hello</p>
+          <div key={index} className="send_msg">
+            <p>{item.message}</p>
           </div>
 
           ))
@@ -160,7 +160,7 @@ const Message = () => {
         <h2>Please Select a Friend List</h2>
       </div>
 
-      }
+    }
     </div>
   )
 }
