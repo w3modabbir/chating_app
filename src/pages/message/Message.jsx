@@ -10,6 +10,7 @@ import { IoSend } from "react-icons/io5";
 
 
 const Message = () => {
+  const [allMessage, setAllMessage] = useState([])
   const [massegText, setMassegText] = useState("")
   const [friendList, setFriendList] = useState();
   const db = getDatabase();
@@ -40,7 +41,7 @@ const Message = () => {
       dispatch(activeuser(i))
     }
 
-    // message data wright opreation
+    // message data write opreation
     let handleSubmit = () =>{
       set(push(ref(db, 'message')), {
         senderid: data.uid,
@@ -57,20 +58,20 @@ const Message = () => {
 
      // message data read operation 
      useEffect(()=>{
-      const friendRef = ref(db, 'message');
-      onValue(friendRef, (snapshot) => {
+      const messageRef = ref(db, 'message');
+      onValue(messageRef, (snapshot) => {
         let arr = []
         snapshot.forEach((item)=>{
           if(data.uid == item.val().whoReceiveid || data.uid == item.val().whoSendid){
             arr.push({...item.val(),id:item.key})
             
-          }
+            }
         })
-        setFriendList(arr)
+        setAllMessage(arr)
     
       });
   
-    },[])
+    },[activechat])
 
   return (
     <div className='message_main'>
@@ -137,12 +138,17 @@ const Message = () => {
          </div>
         </div>
         <div className="msg_main">
+          {allMessage && allMessage.map((item, index)=>(
           <div className="send_msg">
             <p>Hello</p>
           </div>
-          <div className="receive_msg">
+
+          ))
+
+          }
+          {/* <div className="receive_msg">
             <p>Hello</p>
-          </div>
+          </div> */}
         </div>
         <div className="msg_footer">
             <input onChange={(e)=>setMassegText(e.target.value)} placeholder="Your messenge" className="msg_input" />
