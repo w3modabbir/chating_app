@@ -40,14 +40,37 @@ const Message = () => {
       dispatch(activeuser(i))
     }
 
-    // sms send operation
-    let handleFrom = (e) =>{
-      console.log(e.target.value);
+    // message data wright opreation
+    let handleSubmit = () =>{
+      set(push(ref(db, 'message')), {
+        senderid: data.uid,
+        sendername: data.displayName,
+        senderemail: data.email ,
+        message: massegText,
+        recieverid: data.uid == activechat.whoReceiveid ? activechat.whoSendid : activechat.whoReceiveid,
+        recievername: data.uid == activechat.whoReceiveid ? activechat.whoSendname : activechat.whoReceivename,
+        recieveremail: data.uid == activechat.whoReceiveid ? activechat.whoSendemail : activechat.whoReceiveemail,
+      }).then(()=>{
+        console.log("msg send done");
+      }) 
     }
 
-    let handleSubmit = () =>{
-      console.log(massegText);
-    }
+     // message data read operation 
+     useEffect(()=>{
+      const friendRef = ref(db, 'message');
+      onValue(friendRef, (snapshot) => {
+        let arr = []
+        snapshot.forEach((item)=>{
+          if(data.uid == item.val().whoReceiveid || data.uid == item.val().whoSendid){
+            arr.push({...item.val(),id:item.key})
+            
+          }
+        })
+        setFriendList(arr)
+    
+      });
+  
+    },[])
 
   return (
     <div className='message_main'>
