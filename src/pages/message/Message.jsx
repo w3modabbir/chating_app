@@ -6,15 +6,16 @@ import Images from '../../utilities/Images';
 import userImg from '../../../src/assets/images/user.jpg'
 import Input from '../../componants/Input';
 import { activeuser } from '../../slices/ActiveUserSlice';
+import { IoSend } from "react-icons/io5";
 
 
 const Message = () => {
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value);
-  const activechat = useSelector((state) => state.activeuserdata.value);
+  const activechat = useSelector((state) => state?.activeuserdata?.value);
   const [friendList, setFriendList] = useState();
   const dispatch = useDispatch();
-  console.log(activechat);
+  // console.log(activechat);
 
     // user data read operation 
     useEffect(()=>{
@@ -77,10 +78,11 @@ const Message = () => {
           }
         </div>
       </div>
+      {activechat != null ?
       <div className='message_user_sms'>
         <div className="sms_box_heading">
           <div className="user_img_box">
-            {activechat && 
+            {activechat !== null && 
             activechat.whoSendphoto == data.uid
             ?
             <Images source={activechat.whoReceivephoto} alt="img not found"/>
@@ -109,9 +111,16 @@ const Message = () => {
           </div>
         </div>
         <div className="msg_footer">
-            <Input placeholder="Your messenge"/>
+            <input placeholder="Your messenge" className="msg_input" />
+            <button className='msg_send_btn'>send</button>
         </div>
       </div>
+      :
+      <div className='select_user'>
+        <h2>Please Select a Friend List</h2>
+      </div>
+
+      }
     </div>
   )
 }
