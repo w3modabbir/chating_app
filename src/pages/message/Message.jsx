@@ -10,10 +10,11 @@ import { IoSend } from "react-icons/io5";
 
 
 const Message = () => {
+  const [massegText, setMassegText] = useState("")
+  const [friendList, setFriendList] = useState();
   const db = getDatabase();
   const data = useSelector((state) => state.loginuserdata.value);
   const activechat = useSelector((state) => state?.activeuserdata?.value);
-  const [friendList, setFriendList] = useState();
   const dispatch = useDispatch();
   // console.log(activechat);
 
@@ -34,8 +35,18 @@ const Message = () => {
   
     },[])
 
+    //frind list select
     let handleUser = (i)=>{
       dispatch(activeuser(i))
+    }
+
+    // sms send operation
+    let handleFrom = (e) =>{
+      console.log(e.target.value);
+    }
+
+    let handleSubmit = () =>{
+      console.log(massegText);
     }
 
   return (
@@ -111,8 +122,8 @@ const Message = () => {
           </div>
         </div>
         <div className="msg_footer">
-            <input placeholder="Your messenge" className="msg_input" />
-            <button className='msg_send_btn'>send</button>
+            <input onChange={(e)=>setMassegText(e.target.value)} placeholder="Your messenge" className="msg_input" />
+            <button onClick={handleSubmit} className='msg_send_btn'>send</button>
         </div>
       </div>
       :
