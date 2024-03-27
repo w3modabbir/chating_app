@@ -14,9 +14,10 @@ const Message = () => {
   const [massegText, setMassegText] = useState("")
   const [friendList, setFriendList] = useState();
   const db = getDatabase();
-  const data = useSelector((state) => state.loginuserdata.value);
   const activechat = useSelector((state) => state?.activeuserdata?.value);
+  const data = useSelector((state) => state.loginuserdata.value);
   const dispatch = useDispatch();
+  console.log(activechat);
   // console.log(activechat);
 
     // user data read operation 
@@ -52,7 +53,7 @@ const Message = () => {
         recievername: data.uid == activechat.whoReceiveid ? activechat.whoSendname : activechat.whoReceivename,
         recieveremail: data.uid == activechat.whoReceiveid ? activechat.whoSendemail : activechat.whoReceiveemail,
       }).then(()=>{
-        console.log("msg send done");
+        console.log("msm send done");
       }) 
     }
 
@@ -61,8 +62,9 @@ const Message = () => {
       const messageRef = ref(db, 'message');
       onValue(messageRef, (snapshot) => {
         let arr = []
+        let activeuser = activechat.whoSendid == data.uid ? activechat.whoReceiveid : activechat.whoSendid
         snapshot.forEach((item)=>{
-          if(data.uid == item.val().recieverid || data.uid == item.val().senderid){
+          if((item.val().senderid == data.uid && item.val().recieverid == activeuser) || (item.val().recieverid == data.uid && item.val().senderid == activeuser)){
             arr.push({...item.val(),id:item.key})
             
             }
