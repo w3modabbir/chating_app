@@ -140,8 +140,8 @@ const Message = () => {
          </div>
         </div>
         <div className="msg_main">
-          {allMessage && allMessage.map((item, index)=>(
-          <div key={index} className="send_msg">
+          { allMessage.map((item, index)=>(
+          <div key={index}  className={`${item.recieverid == data.uid ? "receive_msg" : "send_msg"}`}>
             <p>{item.message}</p>
           </div>
 

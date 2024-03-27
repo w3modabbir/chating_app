@@ -26,6 +26,7 @@
             flex-direction: column;
             row-gap: 20px;
             padding: 15px;
+            overflow-y: scroll;
             .no_friend_props{
                 text-align: center;
                 margin-top: 50px;
@@ -163,9 +164,10 @@
 
         .msg_main{
             margin: 20px;
-            
+            overflow-y: scroll;
             .send_msg{
-                text-align: right;
+                display: flex;
+                justify-content: end;
                 p{
                     background-color: $primarybg;
                     color: $commonclolor;
@@ -180,6 +182,8 @@
                     -o-border-radius: 5px;
                     display: inline-block;
                     margin-top: 15px;
+                    max-width: 600px;
+                    line-height: 130%;
                 }
             }
             .receive_msg{
@@ -198,6 +202,8 @@
                     -o-border-radius: 5px;
                     display: inline-block;
                     margin-top: 15px;
+                    max-width: 600px;
+                    line-height: 130%;
                 }
             }
             
